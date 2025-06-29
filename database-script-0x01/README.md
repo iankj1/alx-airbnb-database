@@ -10,13 +10,6 @@ This folder contains the SQL schema definition for the <strong>Airbnb Clone</str
 
 ---
 
-### 🗂️ <span style="color:white">Directory: <code>database-script-0x01/</code></span>
-
-| File Name        | Description                          |
-|------------------|--------------------------------------|
-| `schema.sql`     | <span style="color:white">SQL create statements</span> |
-| `README.md`      | <span style="color:white">Documentation (this file)</span> |
-
 ---
 
 ## 🧠 <span style="color:white">Schema Overview</span>
