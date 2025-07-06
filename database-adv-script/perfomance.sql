@@ -1,4 +1,4 @@
--- Initial complex query to retrieve all bookings with user, property, and payment details
+-- Initial query to retrieve all bookings with user, property, and payment details
 
 SELECT 
     b.booking_id,
@@ -6,7 +6,7 @@ SELECT
     b.end_date,
     b.total_price,
     b.status,
-    
+
     u.user_id,
     u.first_name,
     u.last_name,
@@ -28,14 +28,17 @@ JOIN Property p ON b.property_id = p.property_id
 LEFT JOIN Payment pay ON pay.booking_id = b.booking_id;
 
 
+
 -- Analyze the initial query's performance
+-- Use EXPLAIN to view execution plan before optimization
+
 EXPLAIN SELECT 
     b.booking_id,
     b.start_date,
     b.end_date,
     b.total_price,
     b.status,
-    
+
     u.user_id,
     u.first_name,
     u.last_name,
@@ -57,7 +60,9 @@ JOIN Property p ON b.property_id = p.property_id
 LEFT JOIN Payment pay ON pay.booking_id = b.booking_id;
 
 
--- Refactored query to reduce execution time by limiting selected fields and ensuring indexed joins
+
+-- Refactored query to improve performance
+-- Select only necessary fields, minimize row size
 
 SELECT 
     b.booking_id,
