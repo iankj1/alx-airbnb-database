@@ -23,6 +23,38 @@ JOIN
 GROUP BY 
     u.user_id, u.first_name, u.last_name;
 
+-- Write SQL commands to create indexes on columns that are frequently used in JOINs and WHERE clauses
+
+CREATE INDEX idx_user_user_id ON User(user_id);
+CREATE INDEX idx_booking_user_id ON Booking(user_id);
+CREATE INDEX idx_booking_property_id ON Booking(property_id);
+CREATE INDEX idx_property_property_id ON Property(property_id);
+
+
+-- Measure the query performance before adding indexes using EXPLAIN
+-- This shows how the query runs without indexes
+
+EXPLAIN SELECT 
+    u.user_id,
+    COUNT(b.booking_id) AS total_bookings
+FROM 
+    User u
+JOIN 
+    Booking b ON u.user_id = b.user_id
+GROUP BY 
+    u.user_id;
+
+
+-- Measure the query performance after adding indexes using EXPLAIN
+-- This shows the improved query plan when indexes are in place
+
+EXPLAIN SELECT 
+    b.property_id,
+    COUNT(b.booking_id) AS total_bookings
+FROM 
+    Booking b
+GROUP BY 
+    b.property_id;
 
 
 -- ===============================================
