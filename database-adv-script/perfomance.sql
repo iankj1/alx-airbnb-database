@@ -23,7 +23,11 @@ JOIN
 JOIN 
     Property p ON b.property_id = p.property_id
 LEFT JOIN 
-    Payment pay ON pay.booking_id = b.booking_id;
+    Payment pay ON pay.booking_id = b.booking_id
+WHERE 
+    b.start_date >= '2024-01-01'
+AND 
+    b.status = 'confirmed';
 
 
 -- 🔬 Analyze performance before optimization
@@ -52,10 +56,16 @@ JOIN
 JOIN 
     Property p ON b.property_id = p.property_id
 LEFT JOIN 
-    Payment pay ON pay.booking_id = b.booking_id;
+    Payment pay ON pay.booking_id = b.booking_id
+WHERE 
+    b.start_date >= '2024-01-01'
+AND 
+    b.status = 'confirmed';
 
 
--- ⚙️ Optional: Optimization Suggestion (Index if needed)
+-- ⚙️ Optional: Index improvements
+-- CREATE INDEX idx_booking_start_date ON Booking(start_date);
+-- CREATE INDEX idx_booking_status ON Booking(status);
 -- CREATE INDEX idx_booking_user_id ON Booking(user_id);
 -- CREATE INDEX idx_booking_property_id ON Booking(property_id);
 -- CREATE INDEX idx_payment_booking_id ON Payment(booking_id);
