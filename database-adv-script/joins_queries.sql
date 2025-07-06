@@ -39,6 +39,23 @@ FROM
 LEFT JOIN 
     Review r ON p.property_id = r.property_id;
 
+-- Retrieve all properties and their reviews
+-- Include properties that have no reviews
+SELECT 
+    p.property_id,
+    p.name,
+    p.description,
+    p.location,
+    r.review_id,
+    r.rating,
+    r.comment,
+    r.created_at
+FROM 
+    Property p
+LEFT JOIN 
+    Review r ON p.property_id = r.property_id;
+
+
 
 🔹 3. FULL OUTER JOIN — All Users and All Bookings (Even If Unlinked)
 sql
