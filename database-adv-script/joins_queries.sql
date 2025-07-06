@@ -16,6 +16,7 @@ INNER JOIN
     User u ON b.user_id = u.user_id;
 
 
+-- Query 2: LEFT JOIN to retrieve all properties and their reviews, including properties that have no reviews
 SELECT 
     p.property_id,
     p.name,
@@ -48,5 +49,3 @@ FROM
     User u
 FULL OUTER JOIN 
     Booking b ON u.user_id = b.user_id;
-
-
